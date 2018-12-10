@@ -10,7 +10,7 @@ Ez az egyetlen scene található a projekt fő mappájában, ezen kívül a Holo
 
 A létrehozott objektumok, szkriptek és beillesztett *Prefab*ek egy része a letöltött HoloToolkit-re hivatkozik, másik része az oktatóvideók alapján készített és letöltött fájlokra.
 
-![Objects](https://github.com/barabali/tree/master/images/objects.PNG)
+![Objects](https://github.com/barabali/holoroom/blob/master/images/objects.PNG)
 
 ### Main Camera
 Nem történt benne változtatás, megfelel a SpatialMapping tutorialban találhatónak.
