@@ -1,4 +1,4 @@
-# Áttekintés
+# WallDetector áttekintés
 
 ## Feladat:
 
@@ -10,8 +10,26 @@ A Hololensen és gépen futtatható program Unity-vel készült, majd UWP alkalm
 A Unity-ben történő 3D kezeléshez szükséges a Holotoolkit/MixedRealityToolkit importálása, ami tartalmazza a Hololens eszközeinek alapszintű használatát, többek között az infra szenzorok segítségével létrehozott poligonháló feldolgozását, vagy a szkennelt objektumok felismeréséért felelős programkódokat.
 
 Mixed Reality Toolkit: : https://github.com/Microsoft/MixedRealityToolkit-Unity
-Visual Studio: https://visualstudio.microsoft.com/
+
+Microsoft Visual Studio: https://visualstudio.microsoft.com/vs/community/
 
 Az alkalmazás futtatható Hololens emulátorral is, ekkor a beépített minta szobák közül választhatunk, amin a valós eszközhöz hasonlóan megkeresi a falakat és elküldi az alaprajzot a gépnek.
 Visual Studio Community változata is elég, de az UWP kiegészítőt és a Hololens emulátort le kell tölteni hozzá.
 
+## Futtatás
+
+A projektet Unity-ben megnyitva, és a megfelelő kiegészítőket telepíteni (UWP exportáláshoz)
+Be kell állítani a szerverként használt gép ip címét, amire a Hololens megkísérli küldeni az adatokat. Fontos, hogy a megadott port elérhető legyen, ne védje tűzfal, vagy egyéb szabály.
+
+![Image of layout](https://github.com/barabali/holoroom/blob/master/images/selectfile.PNG)
+
+![Image of layout](https://github.com/barabali/holoroom/blob/master/images/setip.PNG)
+
+A projektet *File* menüpont alatt a *Build settings*-re kattintva egy új mappába mentjük.
+
+![Image of layout](https://github.com/barabali/holoroom/blob/master/images/buildsettings.PNG)
+
+Ezután a létrejött Visual Studio projetet megnyitva futtatható a Hololens-en a program a párosítás és egyebek után.
+
+### Kép a kimentett alaprajzról:
+![Image of layout](https://github.com/barabali/holoroom/blob/master/images/export.PNG)
