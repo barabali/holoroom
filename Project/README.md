@@ -31,4 +31,25 @@ Az alkalmazásban nem szükséges a szkenneléshez és alaprajz küldéshez ezek
 
 ### SpatialProcessing
 
-Itt történik a falak keresése és azoknak megfelelő 3D objektumok létrehozása. 
+Itt történik a falak keresése és azoknak megfelelő 3D objektumok létrehozása.
+
+**Play Space Manager**: A Unity Inspector-ban állítható paraméterek:
+
+*Scan time*: A szkennelési sűrűség, ezt érdemes nem túl alacsony értékre állítani, különben nem tudja elég gyorsan végezni a Hololens a feldolgozás, de túl nagy sem lehet, mert akkor meg sokat kell várni a gépen az adatokra. 
+Az observert indítja és állítja le, hogy ne menjen párhuzamosan a falak keresésével.
+(Eredetileg a kezdeti, egyszeri szkennelés idejéért volt felelős, de ezt megszüntettem)
+
+*Limit scanning by time*: A szkennelést nem végzi folyamatosan, csak egyszer, ezt azonban kikommenteltem, jelenleg nincs használva az a kódrészlet, a szkennelési idő másra használt már.
+
+*Default Material*: Alap material ami szkennelés közben aktív
+
+*Secondary Material*: A szkennelés végeztével ezt a Materialt kapják a falak. A SpatialMappingManager-ben ki van kapcsolva a megjelenítés így ez nem látszik.
+
+*MinimumFoors, MinimumWalls*: Nem használtak, objektumok lehelyezésére voltak a mintában.
+
+**SurfaceToPlanes**: Csak a Hololensen hívom meg, a rögzített környezeti adatokból készített poligonhálót kéri el és elemzi, hogy melyek a falak. A *Min Area*val állítható, hogy mekkora területtől számítson valami egybefüggő objektumnak
+A falakat úgy keresi, hogy ellenőrzi a normálvektorokat, és ha sok nagyjából azonos irányba néz, akkor az fal.
+
+Beállítható, hogy milyen típusú talált objektumokat tartson meg és töröljön (csak a falakat tartja meg jelenleg, kisebb és ismeretleneket töröl)
+
+**Remove Surface Vertices**: Működését nem elemeztem, eltávolítja a felesleges objektumokat a modellből.
