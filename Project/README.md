@@ -6,6 +6,8 @@
 
 Ez az egyetlen scene található a projekt fő mappájában, ezen kívül a HoloToolkit mappában van(nak) csak példa Scene-ek amelyek a toolkit részét képezik.
 
+Figyelni kell az egyes szkriptek namespace értékére és a megfelelő többi szkript ha nem azonos namespace, akkor az importra.
+
 ## Scene files
 
 A létrehozott objektumok, szkriptek és beillesztett *Prefab*ek egy része a letöltött HoloToolkit-re hivatkozik, másik része az oktatóvideók alapján készített és letöltött fájlokra.
@@ -27,11 +29,15 @@ A Triangles Per Cubic Meter gyakorlatilag a 3D-s objektum "felbontását", rész
 **SpatialMappingManager:** Ő indítja az obervert. Ezen kívül a szkennelt objektumok kirajzolásáért felelős. Ennek a Material-ja a testre szabható *Surface Material*, amit Wireframe-nek választottam.
 Az alkalmazásban nem szükséges a szkenneléshez és alaprajz küldéshez ezeknek az adatoknak a megjelenítése, ezért a *Draw Visual Meshes* kapcsoló kikapcsolva marad.
 
-**ObjectSurfaceObserver:** Ha Unity editorban fut a program, akkor ellenőrzi, hogy van-e szobának megfelelő fájl megadva. Ha igen, akkor beállítja ezt a SpatialMappingManager adatforrásának.
+**ObjectSurfaceObserver:** Ha Unity editorban fut a program, akkor ellenőrzi, hogy van-e szobának megfelelő fájl megadva. Ha igen, akkor beállítja ezt a SpatialMappingManager adatforrásának. Ekkor a berakott fájlon ellenőrzi a falakat a Unityben. A támogatott fájltípus az obj, ezt exportál pl a DevicePortal a Hololensről is.
+
+A következőt lehet látni gépen történő elemzéskor, vagy a Hololensen lehetne, amennyiben engedélyezve enne az létrehozott elemek megjelenítése:
+
+![Processed](https://github.com/barabali/holoroom/blob/master/images/hololensen.PNG)
 
 ### SpatialProcessing
 
-Itt történik a falak keresése és azoknak megfelelő 3D objektumok létrehozása.
+Itt történik a falak keresése és azoknak megfelelő 3D objektumok létrehozása. A tutorial alapján van felépítve kisebb módosításokkal, a Holotoolkit-nek is vannak hasonló osztályai és szkripjei több funkcióra, de azokra nem volt szükség.
 
 **Play Space Manager**: A Unity Inspector-ban állítható paraméterek:
 
@@ -53,3 +59,27 @@ A falakat úgy keresi, hogy ellenőrzi a normálvektorokat, és ha sok nagyjáb�
 Beállítható, hogy milyen típusú talált objektumokat tartson meg és töröljön (csak a falakat tartja meg jelenleg, kisebb és ismeretleneket töröl)
 
 **Remove Surface Vertices**: Működését nem elemeztem, eltávolítja a felesleges objektumokat a modellből.
+
+### RemoteMapping
+
+A távoli elérésért felel egyrészt a szerver oldalon, másrészt Hololens oldalon a csatlakozásért és adatküldésért. Az Prefab a Holotoolki SpatialMapping mappájából való, ami elő volt készítve a kapcsolódásra és kapcsolat fogadására
+
+**Remote Mesh Target**: A szerver oldalért fele, ez nyújtja a portot a Hololens felé, és fogadja a Datastream-et, majd hozza létre belőle a 3D-s objektumot. Amint egy adatátvitel véget ért és lebontotta a kapcsolatot felkészül a következőre.
+
+**Remote Mesh Source**: A Hololensen futó rész. Kapcsolódik a egadott ip címhez és porthoz, és van egy metódusa, amibe egy byte tömböt paraméterül adva elküldi a Unitynek.
+
+**Remote Mapping Manager**: Ez az osztály volt felelős a példában az adatok küldéséért hang parancsra, de nem ezt használtam.
+
+**File Surface Observer**: A hálózaton kereszült kapott modell mentéséért és újra betöltéséért felel, a megadott gombokra lépnek akcióba a funkciók. 
+
+### Rocket Poster
+
+Egy szkriptje van, ezen kívül lehelyezi a világban a felhasználóval szemben.
+
+**SendMeshes**: A kikommentezett kód újra aktiválásával megadható egy időköz, aminek elteltével elküldi a jelenlegi feldolgozott falakat. Ekkor azonban konkurencia problémák léphetnek fel, mivel ezzel párhuzamosan fut az elemző folyamatok, amik az új falak létrehozásakor törlik az előzőeket, hogy ne legyen duplázódás, így az elküldéskor törlés alatt lévő falat is próbálhat elküldeni.
+
+A jelenlegi módszerrel feliratkozik SurfaceMeshesToPlanes.Instance.MakePlanesComplete eseményre. Ez megoldja az előbbi problémát, mivel akkor végzi a küldést amikor kész a fal készítés, így nem törlésük alatt küldi.
+
+A feliratkozott metódus a SendMeshes. Ez a függvény csak Hololensen fut le, Unityben nincs hatása. 
+
+A függvény elkéri a SurfaceMeshesToPlanes-től a jelenlegi falakat. Ezeket a Unity-s *GameObject*eket ezután feldolgozom. Lekéri mindegyiknek egy ciklus a *Mesh*-ét, ennek vektoriait leklónozza, majd egy tömbbe helyezi. Ez a Mesh osztály szeritalizálható, ezt teszi a végén, és a kapott byte tömböt küldi el a RemoteMeshSource SendData függvényével.
