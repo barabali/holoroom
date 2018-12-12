@@ -14,6 +14,10 @@ A létrehozott objektumok, szkriptek és beillesztett *Prefab*ek egy része a le
 
 ![Objects](https://github.com/barabali/holoroom/blob/master/images/objects.PNG)
 
+Az objektumokban használt szkriptek használnak másik objektumon álló szkriptet, ez általában Singleton osztály példányának lekérését és használatát jelenti (pl Observer-t mindenki eléri a mapping-ban)
+
+![Objects](https://github.com/barabali/holoroom/blob/master/images/architecture.PNG)
+
 ### Main Camera
 Nem történt benne változtatás, megfelel a SpatialMapping tutorialban találhatónak.
 
