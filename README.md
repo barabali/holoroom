@@ -1,10 +1,16 @@
 # WallDetector áttekintés
 
 # Table of Contents
+
+
 [Feladat](https://github.com/barabali/holoroom/blob/master/README.md#feladat)
+
 [Felkészülés](https://github.com/barabali/holoroom/blob/master/README.md#felk%C3%A9sz%C3%BCl%C3%A9s)
+
 [Megvalósítás](https://github.com/barabali/holoroom/blob/master/README.md#megval%C3%B3s%C3%ADt%C3%A1s)
-[Beüzemelés](hhttps://github.com/barabali/holoroom/blob/master/README.md#be%C3%BCzemel%C3%A9s)
+
+[Beüzemelés](https://github.com/barabali/holoroom/blob/master/README.md#be%C3%BCzemel%C3%A9s)
+
 [Futtatás](https://github.com/barabali/holoroom/blob/master/README.md#futtat%C3%A1s)
 
   
