@@ -1,5 +1,16 @@
 # Részletek
 
+[Scenes](https://github.com/barabali/holoroom/blob/master/Project/README.md#scenes)
+
+[Scene files](https://github.com/barabali/holoroom/blob/master/Project/README.md#scene-files)
+
+  - [Main camera](https://github.com/barabali/holoroom/blob/master/Project/README.md#main-camera)
+  - [Cursor](https://github.com/barabali/holoroom/blob/master/Project/README.md#cursor)
+  - [SpatialMapping](https://github.com/barabali/holoroom/blob/master/Project/README.md#spatialmapping)
+  - [SpatialProcessing](https://github.com/barabali/holoroom/blob/master/Project/README.md#spatialprocessing)
+  - [RemoteMapping](https://github.com/barabali/holoroom/blob/master/Project/README.md#remotemapping)
+  - [Rocket Poster](https://github.com/barabali/holoroom/blob/master/Project/README.md#rocket-poster)
+
 ## Scenes
 
 **WallDetector**
