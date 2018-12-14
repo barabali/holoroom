@@ -1,5 +1,7 @@
 # WallDetector áttekintés
 
+# Table of Contents
+  
 ## Feladat:
 
 Hololens segítségével a szobáról alkotott kép feldolgozása, a falak, nagyobb tárgyak jelzése és az ezekből létrehozott 3D-s térkép PC-re mentése.
@@ -60,7 +62,7 @@ Be kell állítani a szerverként használt gép ip címét, amire a Hololens me
 
 ![Image of_server](https://github.com/barabali/holoroom/blob/master/images/setip.PNG)
 
-A projektet *File* menüpont alatt a *Build settings*-re kattintva egy új mappába mentjük.
+A projektet *File* menüpont alatt a *Build settings*-re kattintva egy új mappába mentjük UWP projektként. A C# projekt kapcsoló maradhat kikapcsolva, ha Visual Studioban nem szeretnénk tovább szerkeszteni.
 
 ![Image of layout](https://github.com/barabali/holoroom/blob/master/images/buildsettings.PNG)
 
