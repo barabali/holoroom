@@ -1,10 +1,18 @@
 # WallDetector áttekintés
 
 # Table of Contents
+[Feladat](https://github.com/barabali/holoroom/blob/master/README.md#feladat)
+[Felkészülés](https://github.com/barabali/holoroom/blob/master/README.md#felk%C3%A9sz%C3%BCl%C3%A9s)
+[Megvalósítás](https://github.com/barabali/holoroom/blob/master/README.md#megval%C3%B3s%C3%ADt%C3%A1s)
+[Beüzemelés](hhttps://github.com/barabali/holoroom/blob/master/README.md#be%C3%BCzemel%C3%A9s)
+[Futtatás](https://github.com/barabali/holoroom/blob/master/README.md#futtat%C3%A1s)
+
   
 ## Feladat:
 
-Hololens segítségével a szobáról alkotott kép feldolgozása, a falak, nagyobb tárgyak jelzése és az ezekből létrehozott 3D-s térkép PC-re mentése.
+Hololens segítségével a szobáról alkotott poligonháló feldolgozása, a falak, nagyobb tárgyak jelzése és az ezekből létrehozott 3D-s térkép mentése.
+
+A feladat második fele, amely nem készült el jelen projekt keretében az a térkép felhasználása navigáció szempontjából a Hololensen jelezve az információkat.
 
 ## Felkészülés
 
