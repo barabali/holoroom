@@ -29,6 +29,28 @@ Microsoft Visual Studio: https://visualstudio.microsoft.com/vs/community/
 Az alkalmazás futtatható Hololens emulátorral is, ekkor a beépített minta szobák közül választhatunk, amin a valós eszközhöz hasonlóan megkeresi a falakat és elküldi az alaprajzot a gépnek.
 Visual Studio Community változata is elég, de az UWP kiegészítőt és a Hololens emulátort le kell tölteni hozzá.
 
+## Beüzemelés
+
+A Hololens emulátorhoz a telepítése előtt engedélyezni kell a Windows Developer üzemmódot, ezt több lépésnek is az előfeltétele, így érdemes az elején megtenni. Ezen kívül a Hyper-V engedélyezése is szükséges, amennyiben nincsen, az alaplap BIOS-ában a virtualizációs és ehhez hasonlóakat is be kell kapcsolni. 
+
+Vigyázat, a VMWare virtualizációs szoftverrel egyes beállítások nem kompatibilisak, így lehet hogy csak az egyiket lehet futtatni azonos beállítások mellett.
+
+A Visual Studiohoz az UWP fordításához szükséges kiegészítőn kívül fel kell tenni a Windows 10 SDK for UWP csomag megfelelő verzióját is, ami megegyezik a Hololens emulátor által elvárt verzióval.
+
+A program futtatásához a Unity 2017.2-es verziója ajánlott, újabb kiadásokban a Prefab-ok széteshetnek, és a GameObject-ek nem találnak egymásra a szkriptekkel.
+
+Az exportáláshoz a Unityben az *UWP SDK*-t kell telepíteni illetve a *.NET vagy IL2CPP scripting backend* -et, hogy le tudja build-elni az alkalmazást. A kiexportált *solution*t Visual Studioval megnyitva, majd a futtatási helyet *Remote Device*-ra állítva kell indítani.
+
+Ekkor felajánlja a csatlakozási lehetőséget a Hololenshez. Fontos ezért, hogy tudjuk a Hololens IP címét, ami nem lehet NAT-olt hálózat mögött, vagy meg kell oldani a Port Forwardingot. Ez természtesen másik irányban is igaz, bár nem kötelező, csak azokhoz az alkalmazásokhoz amik kapcsolódnak a géphez. Figyelni kell a tűzfalra is, mert az alkalmazásban alapértelmezetten megadott 11000 portot blokkolja.
+
+Amennyiben eléri a megadott IP címet, párosítás szükséges, a Hollens által kiírt számot kell a gépen is beírni. 
+
+Minden futtatáskor a Hololensnek aktívnak kell lennie.
+
+A Hololens adatait elérhetjük böngészőn keresztül is az IP címét megadva. Itt külön felhasználó létrehozása szükséges, amit a https://<YOUR_HOLOLENS_IP_ADDRESS>/devicesecurity.htm linken lehet megtenni.
+
+Amennyiben a projekt importálása nem működik, a HoloToolkit-et hozzá lehet adni kézzel is a Unityhez az Import Asset funkcióval, azonban a felhasznált Prefab-ok beállításait ilyenkor más úton kell megszerezni.
+
 ## Futtatás
 
 A projektet Unity-ben megnyitva, és a megfelelő kiegészítőket telepíteni (UWP exportáláshoz)
