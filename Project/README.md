@@ -86,4 +86,4 @@ A jelenlegi módszerrel feliratkozik SurfaceMeshesToPlanes.Instance.MakePlanesCo
 
 A feliratkozott metódus a SendMeshes. Ez a függvény csak Hololensen fut le, Unityben nincs hatása. 
 
-A függvény elkéri a SurfaceMeshesToPlanes-től a jelenlegi falakat. Ezeket a Unity-s *GameObject*eket ezután feldolgozom. Lekéri mindegyiknek egy ciklus a *Mesh*-ét, ennek vektoriait leklónozza, majd egy tömbbe helyezi. Ez a Mesh osztály szeritalizálható, ezt teszi a végén, és a kapott byte tömböt küldi el a RemoteMeshSource SendData függvényével.
+A függvény elkéri a SurfaceMeshesToPlanes-től a jelenlegi falakat. Ezeket a Unity-s *GameObject*eket ezután feldolgozom. Egy for ciklus lekéri mindegyiknek a *Mesh*-ét, ennek vektoriait leklónozza, majd egy tömbbe helyezi. Ez a Mesh osztály szerializálható, ezt teszi a végén, és a kapott byte tömböt küldi el a RemoteMeshSource SendData függvényével.
